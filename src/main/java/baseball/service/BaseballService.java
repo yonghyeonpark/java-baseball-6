@@ -33,4 +33,11 @@ public class BaseballService {
     public void scoreInitialize() {
         score.initialize();
     }
+
+    public boolean isWin() {
+        if (score.toString().equals("3스트라이크")) {
+            return true;
+        }
+        return false;
+    }
 }
