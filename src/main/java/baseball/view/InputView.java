@@ -16,7 +16,7 @@ public class InputView {
         return Convert.integerToList(integer);
     }
 
-    private int readGameDecision() {
+    public int readGameDecision() {
         System.out.println(INPUT_GAME_DECISION_MESSAGE);
         return Convert.stringToInteger(readLine());
     }
