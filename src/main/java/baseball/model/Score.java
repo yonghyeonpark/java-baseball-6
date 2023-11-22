@@ -9,6 +9,8 @@ public class Score {
     private static final int INCREMENTAL_VALUE = 1;
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+    private static final String SPACE = " ";
 
     private final Map<String, Integer> score;
 
@@ -33,5 +35,39 @@ public class Score {
     public void initialize() {
         score.clear();
         setUp();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        checkBallCount(stringBuilder);
+        checkStrikeCount(stringBuilder);
+        checkIsNothing(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    private void checkBallCount(StringBuilder stringBuilder) {
+        Integer ballCount = score.get(BALL);
+        if (ballCount != INITIAL_VALUE) {
+            stringBuilder.append(ballCount)
+                    .append(BALL)
+                    .append(SPACE);
+        }
+    }
+
+    private void checkStrikeCount(StringBuilder stringBuilder) {
+        Integer strikeCount = score.get(STRIKE);
+        if (strikeCount != INITIAL_VALUE) {
+            stringBuilder.append(strikeCount)
+                    .append(STRIKE);
+        }
+    }
+
+    private void checkIsNothing(StringBuilder stringBuilder) {
+        Integer ballCount = score.get(BALL);
+        Integer strikeCount = score.get(STRIKE);
+        if (ballCount == INITIAL_VALUE && strikeCount == INITIAL_VALUE) {
+            stringBuilder.append(NOTHING);
+        }
     }
 }
