@@ -24,7 +24,9 @@ public class BaseballService {
             if (computer.get(index) != player.get(index)) {
                 score.addBall();
             }
-            score.addStrike();
+            if (computer.get(index) == player.get(index)) {
+                score.addStrike();
+            }
         }
     }
 
