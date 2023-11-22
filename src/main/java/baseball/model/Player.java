@@ -21,6 +21,10 @@ public class Player {
         this.player = player;
     }
 
+    public List<Integer> getPlayer() {
+        return player;
+    }
+
     private void validateSize(List<Integer> player) {
         if (player.size() != CORRECT_SIZE) {
             throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
