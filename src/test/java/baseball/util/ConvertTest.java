@@ -3,6 +3,7 @@ package baseball.util;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,5 +25,18 @@ public class ConvertTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Convert.stringToInteger("a"))
                 .withMessageContaining("[ERROR]");
+    }
+
+    @DisplayName("정수를 리스트로 변환한다.")
+    @Test
+    void integerToList() {
+        int integer = 123;
+
+        List<Integer> digits = Convert.integerToList(integer);
+
+        assertThat(digits.size()).isEqualTo(3);
+        assertThat(digits.get(0)).isEqualTo(1);
+        assertThat(digits.get(1)).isEqualTo(2);
+        assertThat(digits.get(2)).isEqualTo(3);
     }
 }
