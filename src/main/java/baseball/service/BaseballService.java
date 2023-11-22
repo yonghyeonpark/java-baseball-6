@@ -25,4 +25,12 @@ public class BaseballService {
             score.addStrike();
         }
     }
+
+    public String getResult() {
+        return score.toString();
+    }
+
+    public void scoreInitialize() {
+        score.initialize();
+    }
 }
