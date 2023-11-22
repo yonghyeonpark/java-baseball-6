@@ -5,7 +5,10 @@ import java.util.List;
 
 public class BaseballService {
 
+    private static final int GAME_CONTINUE = 1;
+    private static final int GAME_OVER = 2;
     private static final String GAME_DECISION_ERROR_MESSAGE = "[ERROR] 1 또는 2만 입력할 수 있습니다. (게임을 새로 시작하려면 1, 종료하려면 2)";
+    private static final String ThreeStrike = "3스트라이크";
 
     private final Score score;
 
@@ -39,7 +42,7 @@ public class BaseballService {
     }
 
     public boolean isWin() {
-        if (score.toString().equals("3스트라이크")) {
+        if (score.toString().equals(ThreeStrike)) {
             return true;
         }
         return false;
@@ -47,14 +50,14 @@ public class BaseballService {
 
     public boolean shouldGameContinue(int gameDecision) {
         validate(gameDecision);
-        if (gameDecision == 1) {
+        if (gameDecision == GAME_CONTINUE) {
             return true;
         }
         return false;
     }
 
     private void validate(int gameDecision) {
-        if (gameDecision != 1 && gameDecision != 2) {
+        if (gameDecision != GAME_CONTINUE && gameDecision != GAME_OVER) {
             throw new IllegalArgumentException(GAME_DECISION_ERROR_MESSAGE);
         }
     }
