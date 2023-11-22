@@ -5,6 +5,8 @@ import java.util.List;
 
 public class BaseballService {
 
+    private static final String GAME_DECISION_ERROR_MESSAGE = "[ERROR] 1 또는 2만 입력할 수 있습니다. (게임을 새로 시작하려면 1, 종료하려면 2)";
+
     private final Score score;
 
     public BaseballService() {
@@ -39,5 +41,19 @@ public class BaseballService {
             return true;
         }
         return false;
+    }
+
+    public boolean shouldGameContinue(int gameDecision) {
+        validate(gameDecision);
+        if (gameDecision == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    private void validate(int gameDecision) {
+        if (gameDecision != 1 && gameDecision != 2) {
+            throw new IllegalArgumentException(GAME_DECISION_ERROR_MESSAGE);
+        }
     }
 }
