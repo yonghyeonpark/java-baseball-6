@@ -118,9 +118,9 @@ public class BaseballServiceTest {
         List<Integer> player = List.of(num1, num2, num3);
         baseballService.compareNumber(computer, player);
 
-        boolean winOrDefeat = baseballService.isWin();
+        boolean isWin = baseballService.isWin();
 
-        assertThat(winOrDefeat).isEqualTo(expected);
+        assertThat(isWin).isEqualTo(expected);
     }
 
     @DisplayName("게임 진행 여부에 대해 1 또는 2를 입력하지 않으면 예외가 발생한다.")
